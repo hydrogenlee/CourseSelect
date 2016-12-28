@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #   resources :products
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RuCaptcha::Engine => "/rucaptcha"
   root 'homes#index'
 
   resources :courses do

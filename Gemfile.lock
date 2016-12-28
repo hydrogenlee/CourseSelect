@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/huacnlee/rucaptcha
+  revision: 45a9056cf47afdb1950b1ed64fc715128f0be5ac
+  specs:
+    rucaptcha (1.2.0)
+      railties (>= 3.2)
+
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -199,6 +206,7 @@ DEPENDENCIES
   rails (= 4.2.5.2)
   rails_12factor
   rails_admin (~> 0.8.1)
+  rucaptcha!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -207,4 +215,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6
