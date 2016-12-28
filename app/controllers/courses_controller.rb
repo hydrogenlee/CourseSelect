@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
 
-  before_action :student_logged_in, only: [:select, :quit, :list, :search]
+
+  before_action :student_logged_in, only: [:select, :quit, :list,:sumCredit,:courseTable]
+
   before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
   before_action :logged_in, only: :index
 
@@ -134,6 +136,38 @@ class CoursesController < ApplicationController
     @course=@course-current_user.courses
     #modified end
 =end
+  end
+
+  def sumCredit#lvfeng
+    @courses=current_user.courses if student_logged_in?
+    @sumc1=0
+    @sumc2=0
+    @sumc=0
+    @courses.each do |course|
+      @sumc=@sumc+course.credit.to_i
+      if course.course_type=='公共选修课'
+        @sumc1=@sumc1+course.credit.to_i
+      elsif course.course_type=='专业核心课' || course.course_type=='一级学科核心课'
+        @sumc2=@sumc2+course.credit.to_i
+      end
+    end
+  end
+
+  def courseTable#course table
+    @courses=current_user.courses if student_logged_in?
+    @courseT=Array.new(77,'')
+    @courses.each do |i|
+      @courseI=CourseInfo.find_by_course_code(i.id)
+      j=@courseI
+      if j.course_class.to_i>9
+        a=Array(j.course_class.to_i-1..j.course_class[3,2].to_i-1)
+      else
+        a=Array(j.course_class.to_i-1..j.course_class[2,2].to_i-1)
+      end
+      a.each do |s|
+        @courseT[s*7+(j.course_day.to_i-1)]=i.name+"["+i.course_week+"]"+"["+i.class_room+"]"
+      end
+    end
   end
 
   def select
