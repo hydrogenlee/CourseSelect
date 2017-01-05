@@ -1,4 +1,5 @@
 class ApplyController < ApplicationController
+  before_action :admin_logged_in
   require "prawn"
   $Sclass = {
       0 => '--请选择班级--',
@@ -19,7 +20,6 @@ class ApplyController < ApplicationController
           text "--------------------------------------------------------------------------------------"
           @user = User.where(search_string)
           @user.each do |i|
-
             text "学生姓名："+i.name
             @course=i.courses
             @course.each do |j|
@@ -29,15 +29,17 @@ class ApplyController < ApplicationController
           text "学生签字："
           text "--------------------------------------------------------------------------------------"
           end
-
-
-
         end
         send_file "public/selectCourse/"+banji+".pdf"
       end
       if params[:sclass] == '0'
       flash[:warning] = "请选择要打印成绩单的班级"
       end
+    end
+  end
+  def admin_logged_in
+    unless admin_logged_in?
+      redirect_to root_url, flash: {danger: '请登陆'}
     end
   end
 end
