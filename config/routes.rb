@@ -25,11 +25,13 @@ Rails.application.routes.draw do
   mount Inform::Engine => "admin/inform",as:'inform'
   get "admin/apply"=>"apply#index",as:'apply'
 
+  get "help"=>"help#show",as:'help'
+
 
 
   mount RuCaptcha::Engine => "/rucaptcha"
   root 'homes#index'
-
+  get "/homes/index3"
 
   resources :courses do
     member do

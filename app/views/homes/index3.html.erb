@@ -1,0 +1,19 @@
+<p id="notice1"><%= notice %></p>
+<div class="container1">
+  <div class="col-md-8 col-md-offset-2">
+    <% @announcement1.each do |announcement1| %>
+        <% if announcement1.title==params[:request] %>
+            <h1>
+              <strong>
+                公告标题:
+                <%= announcement1.title %>
+              </strong>
+            </h1>
+
+            <pre data-toggle="tooltip" data-html="true" class="text-left">
+      <%= announcement1.text %>
+    </pre>
+        <% end %>
+    <% end %>
+  </div>
+</div>

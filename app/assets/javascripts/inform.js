@@ -90,7 +90,7 @@ if (typeof Object.create !== 'function') {
 
             $.map(self.$elem.find(self.newsTagName), function( newsItem, index ) {
                 if ( index < self.options.newsPerPage ) {
-                    height = parseInt(height) + parseInt($(newsItem).height()) + 10;
+                    height = parseInt(height) + parseInt($(newsItem).height());
                 }
             });
 

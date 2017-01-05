@@ -15,4 +15,5 @@ RuCaptcha.configure do
   # 不可以用 file_store, null_store 或者 memory_store
   # 因为这些存储方式无法跨进程或服务器，当多进程、服务器部署的时候验证码会验证不过。
   #self.cache_store = [:mem_cache_store, '127.0.0.1']
+  self.cache_store = [:mem_cache_store, '127.0.0.1']
 end
