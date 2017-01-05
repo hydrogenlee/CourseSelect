@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   mount RuCaptcha::Engine => "/rucaptcha"
   root 'homes#index'
 
-
+ get "/homes/index3"
   resources :courses do
     member do
       get :select
@@ -58,8 +58,6 @@ Rails.application.routes.draw do
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'
-
-
   # Example resource route with options:
   #   resources :products do
   #     member do
