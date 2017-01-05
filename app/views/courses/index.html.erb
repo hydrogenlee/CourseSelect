@@ -28,7 +28,7 @@
             <% (params[:pageStart]..params[:pageEnd]).each do |i| %>
                 <tr class="tr-hover">
                   <td><%= i+1 %></td>
-                  <td><%= @course[i].course_code %></td>
+                  <td><%= link_to @course[i].course_code, info_course_path(@course[i]), :target=>"_blank"%></td>
                   <td><%= @course[i].name %></td>
                   <td><%= @course[i].course_time %>/<%= @course[i].credit %></td>
                   <td><%= @course[i].exam_type %></td>
